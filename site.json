@@ -1,0 +1,202 @@
+{
+  "brand": {
+    "name": "VYPRA",
+    "tagline": "Forged for Gamers",
+    "logo": "",
+    "footer": "© 2026 VYPRA. All rights reserved. All trademarks belong to their respective owners.",
+    "contactEmail": "sales@example.com"
+  },
+  "theme": {
+    "primary": "#ff6a00",
+    "secondary": "#ff2d2d",
+    "bg": "#0b0b0d",
+    "surface": "#141417",
+    "text": "#f2f2f2",
+    "muted": "#9a9aa3"
+  },
+  "hero": [
+    {
+      "id": "h1",
+      "eyebrow": "New Generation",
+      "title": "UNLEASH THE APEX",
+      "subtitle": "Next-gen motherboards engineered for extreme overclocking, blazing PCIe 5.0 speed and rock-solid power delivery.",
+      "image": "",
+      "ctaText": "Explore Motherboards",
+      "ctaLink": "products.html?cat=motherboards"
+    },
+    {
+      "id": "h2",
+      "eyebrow": "Graphics",
+      "title": "RAY-TRACED REALITY",
+      "subtitle": "Triple-fan cooling and massive boost clocks for 4K gaming without compromise.",
+      "image": "",
+      "ctaText": "See Graphics Cards",
+      "ctaLink": "products.html?cat=graphics"
+    },
+    {
+      "id": "h3",
+      "eyebrow": "Displays",
+      "title": "SEE IT FIRST",
+      "subtitle": "Ultra-fast gaming monitors with 1 ms response and vivid HDR color.",
+      "image": "",
+      "ctaText": "Shop Monitors",
+      "ctaLink": "products.html?cat=monitors"
+    }
+  ],
+  "highlights": [
+    { "title": "Extreme Power", "text": "Digital VRM designs with massive heatsinks keep CPUs stable under the heaviest loads." },
+    { "title": "Ultra-Fast Storage", "text": "Multiple PCIe 5.0 and 4.0 M.2 slots with thermal guards for sustained speeds." },
+    { "title": "Smart Cooling", "text": "Fan-stop, hybrid headers and precise sensors for quiet performance." },
+    { "title": "Easy Install", "text": "Tool-less slots and quick-release designs that make building a joy." }
+  ],
+  "categories": [
+    { "id": "motherboards", "name": "Motherboards" },
+    { "id": "graphics", "name": "Graphics Cards" },
+    { "id": "monitors", "name": "Gaming Monitors" },
+    { "id": "memory", "name": "Memory" }
+  ],
+  "products": [
+    {
+      "id": "x870-apex-elite",
+      "name": "X870 APEX ELITE",
+      "category": "motherboards",
+      "chipset": "AMD X870",
+      "socket": "AM5",
+      "formFactor": "ATX",
+      "memory": "DDR5",
+      "price": 329,
+      "badge": "New",
+      "featured": true,
+      "image": "",
+      "buyLink": "",
+      "summary": "Flagship AM5 board with PCIe 5.0 graphics and storage, Wi-Fi 7 and a 16+2+2 digital power design.",
+      "features": [
+        { "title": "16+2+2 Digital Power", "text": "Smart power stages deliver clean, stable current for the latest high-core-count processors.", "image": "" },
+        { "title": "PCIe 5.0 Everywhere", "text": "Next-gen graphics and NVMe drives run at full speed with reinforced slots.", "image": "" },
+        { "title": "Wi-Fi 7 & 2.5GbE", "text": "Multi-gigabit wireless and wired networking for lag-free online play.", "image": "" }
+      ],
+      "specs": { "CPU": "AMD Ryzen 9000/8000/7000", "Memory": "4 x DDR5 up to 8000+ MHz (OC)", "Expansion": "1 x PCIe 5.0 x16, 2 x PCIe 4.0 x4", "Storage": "4 x M.2, 4 x SATA 6Gb/s", "LAN": "2.5GbE", "Wireless": "Wi-Fi 7 + Bluetooth 5.4" }
+    },
+    {
+      "id": "b650m-blaze",
+      "name": "B650M BLAZE",
+      "category": "motherboards",
+      "chipset": "AMD B650",
+      "socket": "AM5",
+      "formFactor": "Micro-ATX",
+      "memory": "DDR5",
+      "price": 169,
+      "badge": "Hot",
+      "featured": true,
+      "image": "",
+      "buyLink": "",
+      "summary": "Compact powerhouse with DDR5 support, PCIe 4.0 storage and a robust 8+2+2 power design.",
+      "features": [
+        { "title": "DDR5 Ready", "text": "Dual-channel DDR5 with trace-optimised routing for higher stable speeds.", "image": "" },
+        { "title": "Thermal Armor", "text": "Large VRM and M.2 heatsinks prevent throttling.", "image": "" },
+        { "title": "Easy-Install M.2", "text": "Screw-free latch for quick SSD installation.", "image": "" }
+      ],
+      "specs": { "CPU": "AMD Ryzen 7000/8000/9000", "Memory": "4 x DDR5 up to 7600 MHz (OC)", "Expansion": "1 x PCIe 4.0 x16", "Storage": "2 x M.2, 4 x SATA 6Gb/s", "LAN": "2.5GbE" }
+    },
+    {
+      "id": "b550m-x-forge",
+      "name": "B550M-X FORGE",
+      "category": "motherboards",
+      "chipset": "AMD B550",
+      "socket": "AM4",
+      "formFactor": "Micro-ATX",
+      "memory": "DDR4",
+      "price": 109,
+      "badge": "",
+      "featured": true,
+      "image": "",
+      "buyLink": "",
+      "summary": "Great-value AM4 board with PCIe 4.0 and solid thermal design for budget gaming builds.",
+      "features": [
+        { "title": "PCIe 4.0 Ready", "text": "Fast graphics and NVMe SSD support on a budget.", "image": "" },
+        { "title": "Solid Power Design", "text": "Direct-touch heatpipe-ready VRM heatsink.", "image": "" },
+        { "title": "Smart Fan Control", "text": "Multiple hybrid headers with temperature sensors.", "image": "" }
+      ],
+      "specs": { "CPU": "AMD Ryzen 5000/3000", "Memory": "4 x DDR4 up to 5000+ MHz (OC)", "Expansion": "1 x PCIe 4.0 x16", "Storage": "2 x M.2, 4 x SATA 6Gb/s", "LAN": "1GbE" }
+    },
+    {
+      "id": "z790-titan-master",
+      "name": "Z790 TITAN MASTER",
+      "category": "motherboards",
+      "chipset": "Intel Z790",
+      "socket": "LGA1700",
+      "formFactor": "E-ATX",
+      "memory": "DDR5",
+      "price": 479,
+      "badge": "Flagship",
+      "featured": false,
+      "image": "",
+      "buyLink": "",
+      "summary": "Extreme overclocking platform with 20+1+2 phase power and Thunderbolt 4.",
+      "features": [
+        { "title": "20+1+2 Phase VRM", "text": "Dual 8-pin power with 105A smart stages for record-setting overclocks.", "image": "" },
+        { "title": "Thunderbolt 4", "text": "40 Gb/s connectivity for displays and storage.", "image": "" }
+      ],
+      "specs": { "CPU": "Intel 12th/13th/14th Gen", "Memory": "4 x DDR5 up to 8200+ MHz (OC)", "Storage": "5 x M.2", "LAN": "10GbE + 2.5GbE" }
+    },
+    {
+      "id": "rtx-viper-oc-16g",
+      "name": "VIPER OC 16G",
+      "category": "graphics",
+      "chipset": "NVIDIA RTX",
+      "socket": "",
+      "formFactor": "Triple-slot",
+      "memory": "16GB GDDR7",
+      "price": 899,
+      "badge": "New",
+      "featured": true,
+      "image": "",
+      "buyLink": "",
+      "summary": "Triple-fan, factory-overclocked graphics card built for 4K ray-traced gaming.",
+      "features": [
+        { "title": "Windforce Triple Fans", "text": "Alternate-spinning blades deliver focused airflow with low noise.", "image": "" },
+        { "title": "Metal Backplate", "text": "Strengthens the card and helps dissipate heat.", "image": "" }
+      ],
+      "specs": { "Memory": "16GB GDDR7", "Boost Clock": "2640 MHz", "Outputs": "3 x DP 2.1, 1 x HDMI 2.1", "Power": "1 x 16-pin" }
+    },
+    {
+      "id": "pulse-27-qhd-240",
+      "name": "PULSE 27 QHD 240",
+      "category": "monitors",
+      "chipset": "",
+      "socket": "",
+      "formFactor": "27 inch",
+      "memory": "",
+      "price": 449,
+      "badge": "Hot",
+      "featured": true,
+      "image": "",
+      "buyLink": "",
+      "summary": "27\" QHD fast-IPS gaming monitor with 240 Hz refresh rate and 0.5 ms response.",
+      "features": [
+        { "title": "240 Hz / 0.5 ms", "text": "Buttery-smooth motion for competitive play.", "image": "" },
+        { "title": "HDR Ready", "text": "Wide color gamut and local dimming for punchy visuals.", "image": "" }
+      ],
+      "specs": { "Panel": "27\" Fast IPS", "Resolution": "2560 x 1440", "Refresh": "240 Hz", "Response": "0.5 ms (MPRT)" }
+    },
+    {
+      "id": "nitro-ddr5-32g-6400",
+      "name": "NITRO DDR5 32GB 6400",
+      "category": "memory",
+      "chipset": "",
+      "socket": "",
+      "formFactor": "DIMM",
+      "memory": "DDR5",
+      "price": 119,
+      "badge": "",
+      "featured": false,
+      "image": "",
+      "buyLink": "",
+      "summary": "2 x 16GB DDR5-6400 kit with low-latency timings and RGB lighting.",
+      "features": [
+        { "title": "XMP / EXPO Profiles", "text": "One-click performance profiles for Intel and AMD.", "image": "" }
+      ],
+      "specs": { "Capacity": "32GB (2 x 16GB)", "Speed": "DDR5-6400", "Latency": "CL32", "Voltage": "1.35V" }
+    }
+  ]
+}

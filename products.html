@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Products</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+<main id="app"></main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="js/common.js"></script>
+<script>
+boot('products', data => {
+  const params = new URLSearchParams(location.search);
+  const state = { cat: params.get('cat') || '', q: params.get('q') || '', chipset: '', socket: '', form: '', sort: 'featured' };
+  const all = data.products || [];
+  const uniq = k => [...new Set(all.map(p => p[k]).filter(Boolean))].sort();
+  const catName = state.cat ? (data.categories.find(c => c.id === state.cat)?.name || 'Products') : 'All Products';
+
+  document.getElementById('app').innerHTML = `
+  <div class="page-title"><div class="container"><h1 id="ttl" class="grad-text">${esc(catName)}</h1></div></div>
+  <div class="container listing">
+    <aside class="filters">
+      <h4>Search</h4><input type="search" id="q" value="${esc(state.q)}" placeholder="Name, chipset…">
+      <h4>Category</h4>
+      <label><input type="radio" name="cat" value="" ${!state.cat ? 'checked' : ''}> All</label>
+      ${data.categories.map(c => `<label><input type="radio" name="cat" value="${esc(c.id)}" ${state.cat === c.id ? 'checked' : ''}> ${esc(c.name)}</label>`).join('')}
+      <h4>Chipset</h4><select id="chipset"><option value="">Any</option>${uniq('chipset').map(v => `<option>${esc(v)}</option>`).join('')}</select>
+      <h4>Socket</h4><select id="socket"><option value="">Any</option>${uniq('socket').map(v => `<option>${esc(v)}</option>`).join('')}</select>
+      <h4>Form Factor</h4><select id="form"><option value="">Any</option>${uniq('formFactor').map(v => `<option>${esc(v)}</option>`).join('')}</select>
+    </aside>
+    <div>
+      <div class="toolbar"><span id="count"></span>
+        <select id="sort"><option value="featured">Featured first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name A–Z</option></select></div>
+      <div class="grid" id="list"></div>
+    </div>
+  </div>`;
+
+  function render() {
+    let list = all.filter(p =>
+      (!state.cat || p.category === state.cat) &&
+      (!state.chipset || p.chipset === state.chipset) &&
+      (!state.socket || p.socket === state.socket) &&
+      (!state.form || p.formFactor === state.form) &&
+      (!state.q || [p.name, p.chipset, p.socket, p.summary, p.formFactor].join(' ').toLowerCase().includes(state.q.toLowerCase())));
+    const num = p => (p.price === '' || p.price == null) ? Infinity : Number(p.price);
+    if (state.sort === 'low') list.sort((a, b) => num(a) - num(b));
+    else if (state.sort === 'high') list.sort((a, b) => (num(b) === Infinity ? -1 : num(b)) - (num(a) === Infinity ? -1 : num(a)));
+    else if (state.sort === 'name') list.sort((a, b) => a.name.localeCompare(b.name));
+    else list.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+    document.getElementById('count').textContent = list.length + ' product' + (list.length === 1 ? '' : 's');
+    document.getElementById('list').innerHTML = list.map(cardHtml).join('') || '<div class="empty" style="grid-column:1/-1">No products match these filters.</div>';
+    document.getElementById('ttl').textContent = state.cat ? (data.categories.find(c => c.id === state.cat)?.name || 'Products') : 'All Products';
+  }
+  document.getElementById('q').oninput = e => { state.q = e.target.value; render(); };
+  document.querySelectorAll('input[name=cat]').forEach(r => r.onchange = e => { state.cat = e.target.value; render(); });
+  ['chipset', 'socket', 'form', 'sort'].forEach(id => document.getElementById(id).onchange = e => { state[id] = e.target.value; render(); });
+  render();
+});
+</script>
+</body>
+</html>

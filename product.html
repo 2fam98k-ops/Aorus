@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Product</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+<main id="app"></main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="js/common.js"></script>
+<script>
+boot('products', data => {
+  const id = new URLSearchParams(location.search).get('id');
+  const p = (data.products || []).find(x => x.id === id);
+  const app = document.getElementById('app');
+  if (!p) { app.innerHTML = '<div class="container"><div class="empty" style="margin:80px 0">Product not found. <a href="products.html" style="color:var(--primary)">Browse all products</a></div></div>'; return; }
+  document.title = p.name + ' — ' + data.brand.name;
+  const cat = data.categories.find(c => c.id === p.category);
+  const specs = Object.entries(p.specs || {});
+  const feats = p.features || [];
+  const buy = p.buyLink || ('mailto:' + (data.brand.contactEmail || '') + '?subject=' + encodeURIComponent('Enquiry: ' + p.name));
+
+  app.innerHTML = `
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a> / <a href="products.html?cat=${esc(p.category)}">${esc(cat?.name || 'Products')}</a> / ${esc(p.name)}</div>
+    <div class="pd-hero">
+      <div class="art">${mediaFor(p)}</div>
+      <div>
+        ${p.badge ? `<div class="eyebrow">${esc(p.badge)}</div>` : ''}
+        <h1 class="grad-text" style="-webkit-text-fill-color:transparent">${esc(p.name)}</h1>
+        <p style="color:#c9c9d1;font-size:1.1rem">${esc(p.summary)}</p>
+        <div class="chips">${[p.chipset, p.socket, p.formFactor, p.memory].filter(Boolean).map(v => `<span class="chip">${esc(v)}</span>`).join('')}</div>
+        <div class="pd-price">${money(p.price)}</div>
+        <a class="btn" href="${esc(buy)}">${p.buyLink ? 'Buy Now' : 'Enquire'}</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="tabs"><button class="on" data-t="kf">Key Features</button><button data-t="sp">Specifications</button></div>
+    <div id="kf">${feats.map((f, i) => `<div class="feat"><div class="feat-art">${f.image ? `<img src="${esc(f.image)}" alt="${esc(f.title)}" loading="lazy">` : artSvg(p.category, i + 3)}</div>
+      <div><div class="no">0${i + 1}</div><h3>${esc(f.title)}</h3><p>${esc(f.text)}</p></div></div>`).join('') || '<div class="empty" style="margin:40px 0">No key features added yet.</div>'}</div>
+    <div id="sp" style="display:none"><table class="specs">${specs.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('') || '<tr><td>No specifications yet.</td></tr>'}</table></div>
+  </div>`;
+  document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+    document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+    document.getElementById('kf').style.display = b.dataset.t === 'kf' ? '' : 'none';
+    document.getElementById('sp').style.display = b.dataset.t === 'sp' ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
